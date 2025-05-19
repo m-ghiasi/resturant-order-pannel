@@ -5,7 +5,7 @@ type PropType = {
   icon: ReactNode;
   label: string;
   to: string;
-  className: string;
+  className ?: string;
 };
 
 export default function Item(linkItem: PropType) {

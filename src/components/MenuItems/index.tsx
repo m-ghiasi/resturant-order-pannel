@@ -46,6 +46,9 @@ const menueItems: menuItemsType[] = [
 export default function menu(){
     return(
         <div>
+          {menueItems.map((item,index)=>(
+            <Item key={index} to={item.to} icon={item.icon} label={item.label}/>
+          ))}
           
           
             
