@@ -16,6 +16,7 @@ export default function Products() {
         setShow(!show)
   }
 
+   
 
   const handelClick = (category: string) => {
     setActiveTab(category);
@@ -32,7 +33,7 @@ export default function Products() {
 
       </Wrapper>
 
-      <FormNewProduct className={` ${show? "transform translate-x-[100%]": "transform translate-x-0"} transition-all duration-300 `} />
+      <FormNewProduct onClose={()=>setShow(false)} className={` ${show? "transform translate-x-0]": "transform translate-x-[100%]"} transition-all duration-300 `} />
       
     </div>
   );
