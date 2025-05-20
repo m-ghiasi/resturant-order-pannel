@@ -5,7 +5,8 @@ import { IoLocationSharp } from "react-icons/io5";
 import { IoSend } from "react-icons/io5";
 import { MdPerson4 } from "react-icons/md";
 import type { ReactNode } from "react";
-import { IoMdHeartHalf } from "react-icons/io";
+
+import { FcIcons8Cup } from "react-icons/fc";
 import Item from "../Item";
 import Button from "../Button";
 import StuffInfo from "../StuffInfo";
@@ -55,7 +56,7 @@ export default function Menu() {
         label={"avoburger"}
         to={"dashboard"}
         icon={
-          <IoMdHeartHalf className="min-w-[40px] min-h-[40px]" color="black" />
+          <FcIcons8Cup className="min-w-[40px] min-h-[40px]" color="black" />
         }
       />
       <div>
