@@ -3,6 +3,7 @@ import Card from "../../components/Card";
 import TabFilter from "../../components/TabFilter";
 import Wrapper from "../../components/Wrapper";
 import { foodItems } from "../../data/foodItems";
+import Addproduct from "../../components/AddProduct";
 
 export default function Products() {
   const [activeTab, setActiveTab] = useState<string>("food");
@@ -21,6 +22,8 @@ export default function Products() {
         {filtered.map((item) => (
           <Card key={item.id} {...item} />
         ))}
+        <Addproduct/>
+
       </Wrapper>
     </div>
   );
