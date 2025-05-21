@@ -8,15 +8,13 @@ import FormNewProduct from "../../components/FormNewProduct";
 
 export default function Products() {
   const [activeTab, setActiveTab] = useState<string>("food");
-  const [show, setShow]=useState(false)
+  const [show, setShow] = useState(false);
 
   const filtered = foodItems.filter((item) => item.category === activeTab);
 
-  const handelForm= (e: React.MouseEvent<HTMLElement>)=>{
-        setShow(!show)
-  }
-
-   
+  const handelForm = (e: React.MouseEvent<HTMLElement>) => {
+    setShow(!show);
+  };
 
   const handelClick = (category: string) => {
     setActiveTab(category);
@@ -29,12 +27,18 @@ export default function Products() {
         {filtered.map((item) => (
           <Card key={item.id} {...item} />
         ))}
-        <Addproduct onClick={handelForm}/>
-
+        <Addproduct onClick={handelForm} />
       </Wrapper>
+      {show&&(
+        <div onClick={handelForm} className="absolute bg-black opacity-50 z-10 transition-opacity duration-300 top-0 bottom-0 left-0 right-0"></div>
+      )}
 
-      <FormNewProduct onClose={()=>setShow(false)} className={` ${show? "transform translate-x-0]": "transform translate-x-[100%]"} transition-all duration-300 `} />
-      
+      <FormNewProduct
+        onClose={() => setShow(false)}
+        className={` ${
+          show ? "transform translate-x-0]" : "transform translate-x-[100%]"
+        } transition-all duration-300 `}
+      />
     </div>
   );
 }
