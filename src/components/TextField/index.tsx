@@ -2,14 +2,15 @@ type PropsType = {
   id?: string;
   label: string;
   className?: string;
-  value?: string;
+  value?: string | number;
   plac?: string
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: string;
+  checked?:boolean
 };
 export default function TextField(props: PropsType) {
 
-  const {id,label,className,value,plac,onChange,type}= props;
+  const {id,label,className,value,plac,onChange,type,checked}= props;
   return (
     <div className={`${className} gap-3 p-2`}>
       <label className="" htmlFor={id}>
@@ -25,6 +26,7 @@ export default function TextField(props: PropsType) {
         onChange={onChange}
         value={value }
         placeholder={plac}
+        checked={checked}
       />
     </div>
   );

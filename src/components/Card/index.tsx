@@ -4,12 +4,14 @@ type CardProps = {
   weight: string;
   ingredients: string[];
   image: string;
+  onView: () => void;
+  onEdit: () => void;
 };
 
 import Button from "../Button";
 
 export default function Card(props: CardProps) {
-  const { name, price, weight, image, ingredients } = props;
+  const { name, price, weight, image, ingredients, onView, onEdit } = props;
   return (
     <div className=" bg-white rounded-2xl w-[30%]">
       <img src={image} alt={name} />
@@ -20,10 +22,10 @@ export default function Card(props: CardProps) {
         {ingredients.join(", ")}
       </span>
 
-      <div>
+      <div className="flex gap-5">
         <span>{price}</span>
-        <Button></Button>
-        <Button></Button>
+        <Button onClick={onView}>Read Only</Button>
+        <Button onClick={onEdit}>Editable</Button>
       </div>
     </div>
   );
