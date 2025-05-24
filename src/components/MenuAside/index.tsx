@@ -49,7 +49,7 @@ const menueItems: menuItemsType[] = [
 export default function Menu() {
   const [activeItem, setActiveItem] = useState<string>("dashboard");
   return (
-    <div className="h-screen w-60 flex flex-col gap-7 pl-6 pt-10 relative">
+    <div className="h-screen w-60 flex flex-col gap-7 pt-10 relative">
       <Item
         className={" text-2xl  mb-10"}
         label={"avoburger"}
@@ -62,11 +62,11 @@ export default function Menu() {
         }
       />
 
-      <div>
+      <div className="w-60">
         {menueItems.map((item, index) => (
           <div
-            className={`flex gap-2 ${
-              activeItem === item.label ? "bg-[#326b44]" : ""
+            className={`flex gap-2 p-2 w-full ${
+              activeItem === item.label ? "bg-[#ddeee2]" : ""
             }`}
             key={index}
             onClick={()=>setActiveItem(item.label)}

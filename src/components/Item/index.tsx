@@ -12,7 +12,7 @@ type PropType = {
 export default function Item(linkItem: PropType) {
   const { icon, label, to, className } = linkItem;
   return (
-    <NavLink className= {`${className} flex gap-3 items-center  pb-4`} to={to}>
+    <NavLink className= {`${className} flex gap-3 items-center pl-6  pb-4`} to={to}>
       <span className="text-gray-700 ">{icon}</span>
       
       <span className={` font-medium text-gray-700`}> {label}</span>
