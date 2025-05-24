@@ -1,4 +1,9 @@
+import { MdVisibility } from "react-icons/md";
+import { IoIosSettings } from "react-icons/io";
+import vegan from "../../../public/vegan.png";
+
 type CardProps = {
+  id: number;
   name: string;
   price: number;
   weight: string;
@@ -6,26 +11,35 @@ type CardProps = {
   image: string;
   onView: () => void;
   onEdit: () => void;
+  isVegan: boolean;
 };
 
-import Button from "../Button";
-
 export default function Card(props: CardProps) {
-  const { name, price, weight, image, ingredients, onView, onEdit } = props;
-  return (
-    <div className=" bg-white rounded-2xl w-[30%]">
-      <img src={image} alt={name} />
-      <h3 className="font-bold">{name}</h3>
-      <span className="text-gray-700 ">{weight}</span>
+  const { name, price, weight, ingredients, image, onView, onEdit, isVegan } =
+    props;
 
-      <span className={` font-medium text-gray-700`}>
+  return (
+    <div className="bg-white rounded-2xl w-[30%] flex flex-col items-center gap-1 ">
+      <div className="relative">
+        <img src={image} alt={name} className="w-20 rounded-full" />
+        {!isVegan ? <img className="w-10 absolute top-0 right-[-50px]" src={vegan} alt="" /> : null}
+      </div>
+      <h3 className="font-bold">{name}</h3>
+      <span className="text-gray-700">{weight}</span>
+      <span className="font-medium text-gray-700 py-2 w-[70%] text-center ">
         {ingredients.join(", ")}
       </span>
+      <div className="w-full  flex gap-2 justify-evenly">
+        <span className="text-gray-500">${price}</span>
 
-      <div className="flex gap-5">
-        <span>{price}</span>
-        <Button onClick={onView}>Read Only</Button>
-        <Button onClick={onEdit}>Editable</Button>
+        <div className="flex gap-5">
+          <button onClick={onView}>
+            <MdVisibility color="gray" size={22} />
+          </button>
+          <button onClick={onEdit}>
+            <IoIosSettings color="gray" size={22} />
+          </button>
+        </div>
       </div>
     </div>
   );

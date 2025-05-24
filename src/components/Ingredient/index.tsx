@@ -15,7 +15,6 @@ export default function Ingredient({ mode }: IngredientProps) {
   const {
     addIngredient,
     removeIngredient,
-
     newProduct,
   } = useProductStore();
 

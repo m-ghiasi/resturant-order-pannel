@@ -1,5 +1,6 @@
 type BuType = {
   label?: React.ReactNode;
+  disabled ?: boolean;
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseEnter?: (event: React.MouseEvent<HTMLButtonElement>) => void;

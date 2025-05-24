@@ -1,89 +1,78 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
-
-type Mode = 'add' | 'edit' | 'view';
-// تعریف ساده نوع محصول
-type Product = {
+export type Product = {
+  id: number;
   name: string;
-  ingredients: string[];
-  weight: string;
   price: number;
-//   image: string;
-  calories:number;
-  isVegan:boolean;
+  weight: string;
+  calories: number;
+  isVegan: boolean;
+  image: string;
+  category: string;
+  ingredients: string[];
 };
 
- 
-
-// تعریف حالت استور
 type ProductState = {
-     mode: Mode; 
-  setMode: (mode: Mode) => void;
+  products: Product[];
   newProduct: Product;
-  setProductData: (product: Product) => void;
+  setProductData: (data: Product) => void;
   setName: (name: string) => void;
-  setWeight: (weight: string) => void;
   setPrice: (price: number) => void;
-  setCalories: (calories: number) => void;
-//   setImage: (image: string) => void;
+  setWeight: (weight: string) => void;
+  setCalories: (cal: number) => void;
+  setIsVegan: (value: boolean) => void;
+  addProduct: (product: Product) => void;
+  updateProduct: (product: Product) => void;
+  resetForm: () => void;
   addIngredient: (ingredient: string) => void;
   removeIngredient: (index: number) => void;
-  resetForm: () => void;
-  setIsVegan:(isVegan: boolean)=>void
-
+  setProducts: (products: Product[]) => void;
 };
 
-
-
-// مقدار اولیه‌ی محصول
 const initialProduct: Product = {
-  name: '',
-  ingredients: [],
-  weight: '',
+  id: 0,
+  name: "",
   price: 0,
-//   image: '',
-  calories:0,
-
-  isVegan:false,
+  weight: "",
+  calories: 0,
+  isVegan: false,
+  image: "",
+  category: "food",
+  ingredients: [],
 };
 
-// ساختن استور
 export const useProductStore = create<ProductState>((set) => ({
+  products: [],
+  newProduct: { ...initialProduct },
 
-    mode: 'add',
-     setMode: (mode) => set({ mode }),
+  setProducts: (products) => set(() => ({ products })),
 
-  newProduct: initialProduct,
-
-  setIsVegan: (isVegan) =>
-    set((state) => ({
-      newProduct: { ...state.newProduct, isVegan },
-    })),
+  setProductData: (data) => set(() => ({ newProduct: data })),
 
   setName: (name) =>
     set((state) => ({
       newProduct: { ...state.newProduct, name },
     })),
 
+  setPrice: (price) =>
+    set((state) => ({
+      newProduct: { ...state.newProduct, price },
+    })),
+
   setWeight: (weight) =>
     set((state) => ({
       newProduct: { ...state.newProduct, weight },
     })),
+
   setCalories: (calories) =>
     set((state) => ({
       newProduct: { ...state.newProduct, calories },
     })),
 
-  setPrice: (price) =>
+  setIsVegan: (isVegan) =>
     set((state) => ({
-      newProduct: { ...state.newProduct, price },
+      newProduct: { ...state.newProduct, isVegan },
     })),
-    
-
-//   setImage: (image) =>
-//     set((state) => ({
-//       newProduct: { ...state.newProduct, image },
-//     })),
 
   addIngredient: (ingredient) =>
     set((state) => ({
@@ -94,17 +83,24 @@ export const useProductStore = create<ProductState>((set) => ({
     })),
 
   removeIngredient: (index) =>
-    set((state) => {
-      const updatedIngredients = [...state.newProduct.ingredients];
-      updatedIngredients.splice(index, 1);
-      return {
-        newProduct: { ...state.newProduct, ingredients: updatedIngredients },
-      };
-    }),
+    set((state) => ({
+      newProduct: {
+        ...state.newProduct,
+        ingredients: state.newProduct.ingredients.filter((_, i) => i !== index),
+      },
+    })),
 
-    setProductData: (data: Product) => {
-  set({ newProduct: data });
-},
+  addProduct: (product) =>
+    set((state) => ({
+      products: [...state.products, product],
+    })),
 
-  resetForm: () => set({ newProduct: initialProduct }),
+  updateProduct: (updated) =>
+    set((state) => ({
+      products: state.products.map((p) =>
+        p.id === updated.id ? updated : p
+      ),
+    })),
+
+  resetForm: () => set(() => ({ newProduct: { ...initialProduct } })),
 }));
