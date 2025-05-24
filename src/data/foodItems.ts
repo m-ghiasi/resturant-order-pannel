@@ -1,8 +1,8 @@
 
-import drink from "../../public/drink.jpeg"
-import starter from "../../public/starter.jpeg"
-import food from "../../public/food.webp"
-import other from "../../public/other.jpg"
+import drink from "../../src/assets/drink.jpeg"
+import starter from "../../src/assets/starter.jpeg"
+import food from "../../src/assets/food.webp"
+import other from "../../src/assets/other.jpg"
 export const foodItems = [
   {
     id: 1,
@@ -65,8 +65,8 @@ export const foodItems = [
     ingredients: ["Bread", "Avocado", "Lime"],
     weight: "200",
     price: 90,
-    image: `${starter}`,
-    category: "starter",
+    image: `${food}`,
+    category: "food",
     calories: 320,
     isVegan: true,
   },
@@ -76,8 +76,8 @@ export const foodItems = [
     ingredients: ["Chicken", "Tortilla", "Sauce"],
     weight: "350",
     price: 130,
-    image: `${starter}`,
-    category: "starter",
+   image: `${food}`,
+    category: "food",
     calories: 700,
     isVegan: false,
   },

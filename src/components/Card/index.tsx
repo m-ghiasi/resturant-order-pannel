@@ -1,6 +1,6 @@
 import { MdVisibility } from "react-icons/md";
 import { IoIosSettings } from "react-icons/io";
-import vegan from "../../../public/vegan.png";
+import vegan from "../../../src/assets/vegan.png";
 
 type CardProps = {
   id: number;
@@ -19,7 +19,7 @@ export default function Card(props: CardProps) {
     props;
 
   return (
-    <div className="bg-white rounded-2xl w-[30%] flex flex-col items-center gap-1 ">
+    <div className="bg-white rounded-2xl w-[22%] flex flex-col items-center gap-1 ">
       <div className="relative">
         <img src={image} alt={name} className="w-20 rounded-full" />
         {!isVegan ? <img className="w-10 absolute top-0 right-[-50px]" src={vegan} alt="" /> : null}

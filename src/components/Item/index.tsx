@@ -6,6 +6,7 @@ type PropType = {
   label: string;
   to: string;
   className ?: string;
+ onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export default function Item(linkItem: PropType) {
