@@ -66,7 +66,7 @@ export default function Menu() {
         {menueItems.map((item, index) => (
           <div
             className={`flex gap-2 p-2 w-full ${
-              activeItem === item.label ? "bg-[#ddeee2]" : ""
+              activeItem === item.label ? "bg-[#ddeee2]  border-r-4 border-[#39d7ad]" : ""
             }`}
             key={index}
             onClick={()=>setActiveItem(item.label)}
@@ -87,7 +87,7 @@ export default function Menu() {
         ))}
       </div>
 
-      <div className="absolute bottom-2 items-center flex flex-col ">
+      <div className="absolute bottom-2 items-center flex flex-col pl-6 ">
         <p className="text-gray-700 mb-3">done for the day?</p>
 
         <Button

@@ -39,7 +39,7 @@ export default function Products() {
   return (
     <div className={`flex flex-col gap-3 items-center w-full h-screen relative overflow-hidden ${show ? "bg-gray-300": "bg-white"}`}>
       <div>Search bar placeholder</div>
-      <TabFilter className="" onClick={handleTabClick} />
+      <TabFilter className="" categoryMode={handleTabClick} />
       <Wrapper>
         {products
           .filter((item) => item.category === activeTab)

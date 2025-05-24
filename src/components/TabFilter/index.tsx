@@ -1,6 +1,6 @@
 type PropType = {
   className?: string;
-  onClick?: (value: string) => void;
+  categoryMode?: (value: string) => void;
 };
 import { FaHamburger } from "react-icons/fa";
 import { RiDrinksFill } from "react-icons/ri";
@@ -8,41 +8,43 @@ import { TbSoupFilled } from "react-icons/tb";
 import { IoFastFood } from "react-icons/io5";
 import Button from "../Button";
 import { IoMdMore } from "react-icons/io";
+import { useState } from "react";
 
 type FilterType = {
   label: string;
   icon: React.ReactNode;
-  value: string;
+  category: string;
 };
 const filterItem: FilterType[] = [
   {
     label: "Main Curses",
-    value: "food",
+    category: "food",
 
     icon: <FaHamburger className="min-w-[30px] min-h-[30px]" />,
   },
   {
     label: "Side Dishes",
-    value: "starter",
+    category: "starter",
 
     icon: <TbSoupFilled className="min-w-[30px] min-h-[30px]" />,
   },
   {
     label: "Drink",
-    value: "drink",
+    category: "drink",
 
     icon: <RiDrinksFill className="min-w-[30px] min-h-[30px]" />,
   },
   {
     label: "Other",
-    value: "other",
+    category: "other",
 
     icon: <IoFastFood className="min-w-[30px] min-h-[30px]" />,
   },
 ];
 
 export default function TabFilter(props: PropType) {
-  const { className, onClick } = props;
+  const { className, categoryMode } = props;
+  const [isActivTab, setIsActivTab] = useState("food");
 
   return (
     <div
@@ -51,9 +53,14 @@ export default function TabFilter(props: PropType) {
       <div className="flex justify-evenly gap-30">
         {filterItem.map((item, index) => (
           <Button
-            className="flex items-center gap-2"
+            className={`w-40 p-3 flex items-center gap-2 ${
+              isActivTab === item.category ? "border-b-4 border-gray-600" : ""
+            }`}
             key={index}
-            onClick={() => onClick?.(item.value)}
+            onClick={() => {
+              categoryMode?.(item.category);
+              setIsActivTab(item.category);
+            }}
           >
             <span className="">{item.icon}</span>
             <span className="font-medium text-[14px]">{item.label}</span>
@@ -61,7 +68,7 @@ export default function TabFilter(props: PropType) {
         ))}
       </div>
       <span>
-        <IoMdMore  />
+        <IoMdMore />
       </span>
     </div>
   );

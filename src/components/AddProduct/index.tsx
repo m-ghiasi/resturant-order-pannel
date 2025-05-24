@@ -7,7 +7,7 @@ type PropType={
 export default function Addproduct(prop:PropType) {
   const {onClick}=prop
   return (
-    <div className="  flex bg-gray-200 rounded-2xl w-[30%] border-2 border-gray-400  justify-center items-center">
+    <div className="  flex bg-gray-200 rounded-2xl w-[22%] justify-center flex-col items-center gap-1 p-3">
       <div>
         <Button onClick={onClick} className="w-30 flex flex-col items-center justify-center">
           <FaPlus color="gray"/>
