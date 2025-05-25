@@ -7,6 +7,7 @@ import TextField from "../TextField";
 import Ingredient from "../Ingredient";
 import { IoMdClose } from "react-icons/io";
 import vegan from "../../assets/vegan.png"
+import { MdFileUpload } from "react-icons/md";
 type FormType = {
   mode: any;
   onClose: any;
@@ -108,10 +109,13 @@ export default function FormNewProduct({ mode, onClose, className }: FormType) {
           onChange={(e) => setPrice(Number(e.target.value))}
           wrapperClassName="flex flex-col"
         />
-        <div>
+        <div className="flex justify-evenly my-2  ">
           <p>Upload photo</p>
-          <Button />
-          <p>upload loading</p>
+          <Button className="flex items-center gap-3" label="Chose file">
+            <MdFileUpload size={23}/>
+
+          </Button>
+          
         </div>
         <Button
           disabled={mode === "view"}
