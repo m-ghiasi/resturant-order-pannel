@@ -79,7 +79,7 @@ export default function Menu() {
               label={item.label}
             />
             {item.label === "Orders" && orderCount > 0 && (
-              <span className=" bg-gradient-to-r from-[#39d7ad] to-[#75db75] text-white text-xs rounded-2xl w-8 h-5 flex items-center justify-center mt-2">
+              <span className=" bg-gradient-to-r from-[#39d7ad] to-[#75db75] text-black font-bold text-xs rounded-2xl w-8 h-5 flex items-center justify-center mt-2">
                 {orderCount}
               </span>
             )}

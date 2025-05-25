@@ -1,33 +1,49 @@
 type PropsType = {
   id?: string;
   label: string;
-  className?: string;
+  labelClassName?: string;
+  inputClassName?: string;
+  wrapperClassName?: string;
   value?: string | number;
-  plac?: string
+  plac?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: string;
-  checked?:boolean
+  checked?: boolean;
+  children?: React.ReactNode;
 };
 export default function TextField(props: PropsType) {
-
-  const {id,label,className,value,plac,onChange,type,checked}= props;
+  const {
+    id,
+    label,
+    labelClassName,
+    value,
+    plac,
+    onChange,
+    type,
+    checked,
+    inputClassName,
+    wrapperClassName,
+    children
+  } = props;
   return (
-    <div className={`${className} gap-3 p-2`}>
-      <label className="" htmlFor={id}>
+    <div className={`${wrapperClassName} gap-3 p-2`}>
+      <label className={`font-medium text-xl ${labelClassName}`} htmlFor={id}>
         {label}
       </label>
+      {children}
 
       <input
         required
-        className="bg-gray-100 rounded-2xl p-2 w-50 border-2 focus:outline-none focus:border-purple-600"
+        className={`bg-gray-100 rounded-xl"  p-2  focus:outline-none focus:border-purple-600 ${inputClassName} border border-gray-300 h-17`}
         type={type}
         name={id}
         id={id}
         onChange={onChange}
-        value={value }
+        value={value}
         placeholder={plac}
         checked={checked}
-      />
+      ></input>
+      
     </div>
   );
 }
