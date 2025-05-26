@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Card from "../../components/Card";
 import TabFilter from "../../components/TabFilter";
 import Wrapper from "../../components/Wrapper";
@@ -6,8 +6,9 @@ import { foodItems } from "../../data/foodItems";
 import Addproduct from "../../components/AddProduct";
 import FormNewProduct from "../../components/FormNewProduct";
 import { useProductStore } from "../../store/productStore";
-type foodItems={
- id: number;
+import Search from "../../components/SearchBar";
+type foodItems = {
+  id: number;
   name: string;
   ingredients: string[];
   weight: string;
@@ -16,15 +17,17 @@ type foodItems={
   category: string;
   calories: number;
   isVegan: boolean;
-}
+};
 export default function Products() {
-  const [activeTab, setActiveTab] = useState("food");
   const [show, setShow] = useState(false);
   const [formMode, setFormMode] = useState<"add" | "edit" | "view">("view");
 
   const products = useProductStore((state) => state.products);
   const setProducts = useProductStore((state) => state.setProducts);
   const setProductData = useProductStore((state) => state.setProductData);
+  const activeTab = useProductStore((state) => state.activeTab);
+  const setActiveTab = useProductStore((state) => state.setActiveTab);
+  const searchName = useProductStore((state) => state.searchName);
 
   useEffect(() => {
     if (products.length === 0) {
@@ -32,16 +35,28 @@ export default function Products() {
     }
   }, []);
 
+   const filteredItems = useMemo(() => {
+    return products.filter((item) => {
+      const matchCategory = item.category === activeTab;
+      const matchSearch = item.name.toLowerCase().includes(searchName.toLowerCase());
+      return matchCategory && matchSearch;
+    });
+  }, [products, activeTab, searchName]);
+
   const handleFormToggle = () => setShow(!show);
 
   const handleTabClick = (category: string) => setActiveTab(category);
 
   return (
-    <div className={`flex flex-col gap-3 items-center w-full h-screen relative overflow-hidden ${show ? "bg-gray-300": "bg-white"}`}>
-      <div>Search bar placeholder</div>
+    <div
+      className={`flex flex-col gap-3 px-20 w-full h-screen relative overflow-hidden ${
+        show ? "bg-gray-300" : "bg-gray-100"
+      }`}
+    >
+      <Search />
       <TabFilter className="" categoryMode={handleTabClick} />
       <Wrapper>
-        {products
+        {filteredItems
           .filter((item) => item.category === activeTab)
           .map((item) => (
             <Card
@@ -69,15 +84,13 @@ export default function Products() {
         ></div>
       )}
 
-      
-        <FormNewProduct
-          onClose={handleFormToggle}
-          mode={formMode}
-          className={`transition-all duration-300 ${
-            show ? "transform translate-x-[0]" : "transform translate-x-full"
-          } `}
-        />
-      
+      <FormNewProduct
+        onClose={handleFormToggle}
+        mode={formMode}
+        className={`transition-all duration-300 ${
+          show ? "transform translate-x-[0]" : "transform translate-x-full"
+        } `}
+      />
     </div>
   );
 }

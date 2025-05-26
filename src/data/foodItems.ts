@@ -117,7 +117,7 @@ export const foodItems = [
   {
     id: 11,
     name: "Pasta Alfredo",
-    ingredients: ["Pasta", "Cream", "Mushroom","chicken", "Cream","chicken"],
+    ingredients: ["Pasta", "Cream", "chicken"],
     weight: "450",
     price: 160,
     image: `${food}`,
