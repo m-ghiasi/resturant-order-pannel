@@ -7,7 +7,7 @@ type WrapperProps= {
 
 export default function Wrapper({children}: WrapperProps){
     return(
-        <div className="w-[80%] overflow-x-hidden flex  flex-wrap gap-10 ">
+        <div className="w-full min-w-[80%] overflow-x-hidden flex  flex-wrap gap-13 ">
                 {children}
         </div>
     )

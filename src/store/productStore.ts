@@ -27,6 +27,10 @@ type ProductState = {
   addIngredient: (ingredient: string) => void;
   removeIngredient: (index: number) => void;
   setProducts: (products: Product[]) => void;
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+  searchName: string;
+setSearchName: (text: string) => void;
 };
 
 const initialProduct: Product = {
@@ -101,6 +105,10 @@ export const useProductStore = create<ProductState>((set) => ({
         p.id === updated.id ? updated : p
       ),
     })),
+    activeTab: "food",
+  setActiveTab: (tab) => set(() => ({ activeTab: tab })),
+  searchName: "",
+setSearchName: (text) => set(() => ({ searchName: text })),
 
   resetForm: () => set(() => ({ newProduct: { ...initialProduct } })),
 }));

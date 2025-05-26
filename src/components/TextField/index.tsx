@@ -26,15 +26,15 @@ export default function TextField(props: PropsType) {
     children
   } = props;
   return (
-    <div className={`${wrapperClassName} gap-3 p-2`}>
-      <label className={`font-medium text-xl ${labelClassName}`} htmlFor={id}>
+    <div className={`${wrapperClassName} gap-3 p-2 `}>
+      <label className={`font-medium  ${labelClassName}`} htmlFor={id}>
         {label}
       </label>
       {children}
 
       <input
         required
-        className={`bg-gray-100 rounded-xl"  p-2  focus:outline-none focus:border-purple-600 ${inputClassName} border border-gray-300 h-17`}
+        className={`bg-gray-100 rounded-xl"  p-2  focus:outline-none ${inputClassName} border border-gray-300 `}
         type={type}
         name={id}
         id={id}
@@ -43,6 +43,7 @@ export default function TextField(props: PropsType) {
         placeholder={plac}
         checked={checked}
       ></input>
+      
       
     </div>
   );

@@ -48,7 +48,7 @@ export default function TabFilter(props: PropType) {
 
   return (
     <div
-      className={`${className} flex justify-between items-center w-[80%] bg-white rounded-2xl p-5 `}
+      className={`${className} flex justify-between items-center  w-full bg-white rounded-2xl p-5 my-4 `}
     >
       <div className="flex justify-evenly gap-30">
         {filterItem.map((item, index) => (
