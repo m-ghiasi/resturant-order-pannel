@@ -10,7 +10,7 @@
       ],
       "weight": "300",
       "price": 80,
-      "image": "../../src/assets/vegan-salad.jpeg",
+      "image": "/src/assets/food.webp",
       "category": "food",
       "calories": 250,
       "isVegan": true
@@ -25,7 +25,7 @@
       ],
       "weight": "400",
       "price": 150,
-      "image": "../../src/assets/grilled-chicken.jpeg",
+      "image": "/src/assets/food.webp",
       "category": "food",
       "calories": 450,
       "isVegan": false
@@ -40,7 +40,7 @@
       ],
       "weight": "350",
       "price": 70,
-      "image": "../../src/assets/tomato-soup.jpeg",
+      "image": "/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 180,
       "isVegan": false
@@ -55,7 +55,7 @@
       ],
       "weight": "250",
       "price": 50,
-      "image": "../../src/assets/french-fries.jpeg",
+      "image": "/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 300,
       "isVegan": true
@@ -68,7 +68,7 @@
       ],
       "weight": "200",
       "price": 60,
-      "image": "../../src/assets/orange-juice.jpeg",
+      "image": "/src/assets/drink.jpeg",
       "category": "drink",
       "calories": 110,
       "isVegan": true
@@ -84,7 +84,7 @@
       ],
       "weight": "350",
       "price": 180,
-      "image": "../../src/assets/cheeseburger.jpeg",
+      "image": "/src/assets/food.webp",
       "category": "food",
       "calories": 550,
       "isVegan": false
@@ -100,7 +100,7 @@
       ],
       "weight": "300",
       "price": 90,
-      "image": "../../src/assets/caesar-salad.jpeg",
+      "image": "/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 350,
       "isVegan": false
@@ -116,7 +116,7 @@
       ],
       "weight": "450",
       "price": 200,
-      "image": "../../src/assets/margarita-pizza.jpeg",
+     "image": "/src/assets/food.webp",
       "category": "food",
       "calories": 700,
       "isVegan": false
@@ -131,7 +131,7 @@
       ],
       "weight": "250",
       "price": 40,
-      "image": "../../src/assets/iced-tea.jpeg",
+      "image": "/src/assets/drink.jpeg",
       "category": "drink",
       "calories": 90,
       "isVegan": true
@@ -146,7 +146,7 @@
       ],
       "weight": "350",
       "price": 80,
-      "image": "../../src/assets/minestrone-soup.jpeg",
+      "image":"/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 150,
       "isVegan": true
@@ -162,7 +162,7 @@
       ],
       "weight": "350",
       "price": 170,
-      "image": "../../src/assets/veggie-burger.jpeg",
+      "image": "/src/assets/food.webp",
       "category": "food",
       "calories": 400,
       "isVegan": true
@@ -178,7 +178,7 @@
       ],
       "weight": "150",
       "price": 60,
-      "image": "../../src/assets/garlic-bread.jpeg",
+      "image": "/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 280,
       "isVegan": false
@@ -193,7 +193,7 @@
       ],
       "weight": "250",
       "price": 50,
-      "image": "../../src/assets/lemonade.jpeg",
+      "image": "/src/assets/drink.jpeg",
       "category": "drink",
       "calories": 120,
       "isVegan": true
@@ -208,8 +208,8 @@
       ],
       "weight": "400",
       "price": 350,
-      "image": "../../src/assets/beef-steak.jpeg",
-      "category": "food",
+      "image": "/src/assets/food.webp",
+      "category":"food",
       "calories": 600,
       "isVegan": false
     },
@@ -224,7 +224,7 @@
       ],
       "weight": "200",
       "price": 70,
-      "image": "../../src/assets/bruschetta.jpeg",
+      "image":"/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 150,
       "isVegan": true
@@ -238,7 +238,7 @@
       ],
       "weight": "60",
       "price": 40,
-      "image": "../../src/assets/espresso.jpeg",
+      "image": "/src/assets/drink.jpeg",
       "category": "drink",
       "calories": 5,
       "isVegan": true
@@ -254,7 +254,7 @@
       ],
       "weight": "400",
       "price": 180,
-      "image": "../../src/assets/pasta-carbonara.jpeg",
+      "image": "/src/assets/food.webp",
       "category": "food",
       "calories": 550,
       "isVegan": false
@@ -270,7 +270,7 @@
       ],
       "weight": "300",
       "price": 90,
-      "image": "../../src/assets/greek-salad.jpeg",
+      "image":"/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 200,
       "isVegan": false
@@ -286,7 +286,7 @@
       ],
       "weight": "250",
       "price": 120,
-      "image": "../../src/assets/mojito.jpeg",
+      "image": "/src/assets/drink.jpeg",
       "category": "drink",
       "calories": 150,
       "isVegan": true
@@ -302,7 +302,7 @@
       ],
       "weight": "150",
       "price": 100,
-      "image": "../../src/assets/chocolate-cake.jpeg",
+      "image": "/src/assets/other.jpg",
       "category": "other",
       "calories": 450,
       "isVegan": false
