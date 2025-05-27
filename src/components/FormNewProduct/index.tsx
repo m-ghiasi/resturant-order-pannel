@@ -8,6 +8,7 @@ import Ingredient from "../Ingredient";
 import { IoMdClose } from "react-icons/io";
 import vegan from "../../assets/vegan.png";
 import { MdFileUpload } from "react-icons/md";
+import { categoryImageMap } from "../../data/foodItems";
 type FormType = {
   mode: any;
   onClose: any;
@@ -21,10 +22,12 @@ export default function FormNewProduct({ mode, onClose, className }: FormType) {
     setWeight,
     setCalories,
     setIsVegan,
-    setProductData,
+    setActiveTab,
     addProduct,
     updateProduct,
     resetForm,
+
+    activeTab,
   } = useProductStore();
 
   const isEdit = mode === "edit";
@@ -32,11 +35,21 @@ export default function FormNewProduct({ mode, onClose, className }: FormType) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    const image = categoryImageMap[activeTab] || "";
+
+    const newItem = {
+      ...newProduct,
+      id: Date.now(),
+      category: newProduct.category || activeTab,
+      image,
+    };
+    console.log("New product category:", newItem.category);
+    console.log("Active tab before add:", activeTab);
+
     if (mode === "add") {
-      // برای افزودن، باید به newProduct یه id یکتا بدی، اینجا ساده با طول آرایه می‌ذاریم
-      addProduct({ ...newProduct, id: Date.now() });
-    } else if (mode === "edit") {
-      updateProduct(newProduct);
+      addProduct(newItem);
+      setActiveTab(newItem.category);
+      console.log("Added new product:", newItem);
     }
 
     resetForm();
@@ -45,7 +58,7 @@ export default function FormNewProduct({ mode, onClose, className }: FormType) {
 
   return (
     <div
-      className={`absolute w-[35%] h-screen right-0 top-0 bottom-0 z-10 bg-white p-5 ${className} `}
+      className={`absolute w-[35%] h-screen right-0 top-0 bottom-0 z-10 bg-white p-5 overflow-auto ${className} `}
     >
       <div className="flex items-center justify-between ">
         <p className="text-2xl">

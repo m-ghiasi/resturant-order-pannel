@@ -34,14 +34,27 @@ export default function Products() {
       setProducts(foodItems);
     }
   }, []);
+  useEffect(() => {
+    console.log("Updated products in Products component:", products);
+  }, [products]);
+  useEffect(() => {
+    console.log("Active tab updated:", activeTab);
+  }, [activeTab]);
 
-   const filteredItems = useMemo(() => {
+  const filteredItems = useMemo(() => {
     return products.filter((item) => {
       const matchCategory = item.category === activeTab;
-      const matchSearch = item.name.toLowerCase().includes(searchName.toLowerCase());
+      const matchSearch = item.name
+        .toLowerCase()
+        .includes(searchName.toLowerCase());
+      
       return matchCategory && matchSearch;
     });
+  
   }, [products, activeTab, searchName]);
+
+  console.log("filteredItems:", filteredItems);
+  console.log("Active tab:", activeTab);
 
   const handleFormToggle = () => setShow(!show);
 
@@ -56,24 +69,22 @@ export default function Products() {
       <Search />
       <TabFilter className="" categoryMode={handleTabClick} />
       <Wrapper>
-        {filteredItems
-          .filter((item) => item.category === activeTab)
-          .map((item) => (
-            <Card
-              key={item.id}
-              {...item}
-              onView={() => {
-                setFormMode("view");
-                setProductData(item);
-                setShow(true);
-              }}
-              onEdit={() => {
-                setFormMode("edit");
-                setProductData(item);
-                setShow(true);
-              }}
-            />
-          ))}
+        {filteredItems.map((item) => (
+          <Card
+            key={item.id}
+            {...item}
+            onView={() => {
+              setFormMode("view");
+              setProductData(item);
+              setShow(true);
+            }}
+            onEdit={() => {
+              setFormMode("edit");
+              setProductData(item);
+              setShow(true);
+            }}
+          />
+        ))}
         <Addproduct onClick={handleFormToggle} />
       </Wrapper>
 

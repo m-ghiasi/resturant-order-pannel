@@ -3,6 +3,13 @@ import drink from "../../src/assets/drink.jpeg"
 import starter from "../../src/assets/starter.jpeg"
 import food from "../../src/assets/food.webp"
 import other from "../../src/assets/other.jpg"
+
+export const categoryImageMap: Record<string, string> = {
+  drink,
+  food,
+  starter,
+  other
+};
 export const foodItems = [
   {
     id: 1,

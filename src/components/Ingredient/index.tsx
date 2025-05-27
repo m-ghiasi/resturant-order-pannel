@@ -41,7 +41,7 @@ export default function Ingredient({ mode }: IngredientProps) {
       </div>
       <div className="flex flex-wrap border border-gray-300  gap-2 w-[80%] ml-2 p-1 min-h-10">
         {newProduct.ingredients.map((item, index) => (
-          <button className="flex text-gray-600 items-center px-1 bg-gray-200 h-10 gap-1  m-1">
+          <button key={index} className="flex text-gray-600 items-center px-1 bg-gray-200 h-10 gap-1  m-1">
             <IoMdClose size={18} />
             {item}
           </button>
