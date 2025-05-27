@@ -1,0 +1,322 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Vegan Salad",
+      "ingredients": [
+        "Lettuce",
+        "Cucumber",
+        "Tomato"
+      ],
+      "weight": "300",
+      "price": 80,
+      "image": "../../src/assets/vegan-salad.jpeg",
+      "category": "food",
+      "calories": 250,
+      "isVegan": true
+    },
+    {
+      "id": 2,
+      "name": "Grilled Chicken",
+      "ingredients": [
+        "Chicken Breast",
+        "Spices",
+        "Olive Oil"
+      ],
+      "weight": "400",
+      "price": 150,
+      "image": "../../src/assets/grilled-chicken.jpeg",
+      "category": "food",
+      "calories": 450,
+      "isVegan": false
+    },
+    {
+      "id": 3,
+      "name": "Tomato Soup",
+      "ingredients": [
+        "Tomatoes",
+        "Cream",
+        "Garlic"
+      ],
+      "weight": "350",
+      "price": 70,
+      "image": "../../src/assets/tomato-soup.jpeg",
+      "category": "starter",
+      "calories": 180,
+      "isVegan": false
+    },
+    {
+      "id": 4,
+      "name": "French Fries",
+      "ingredients": [
+        "Potatoes",
+        "Salt",
+        "Oil"
+      ],
+      "weight": "250",
+      "price": 50,
+      "image": "../../src/assets/french-fries.jpeg",
+      "category": "starter",
+      "calories": 300,
+      "isVegan": true
+    },
+    {
+      "id": 5,
+      "name": "Orange Juice",
+      "ingredients": [
+        "Fresh Oranges"
+      ],
+      "weight": "200",
+      "price": 60,
+      "image": "../../src/assets/orange-juice.jpeg",
+      "category": "drink",
+      "calories": 110,
+      "isVegan": true
+    },
+    {
+      "id": 6,
+      "name": "Cheeseburger",
+      "ingredients": [
+        "Beef Patty",
+        "Cheese",
+        "Lettuce",
+        "Tomato"
+      ],
+      "weight": "350",
+      "price": 180,
+      "image": "../../src/assets/cheeseburger.jpeg",
+      "category": "food",
+      "calories": 550,
+      "isVegan": false
+    },
+    {
+      "id": 7,
+      "name": "Caesar Salad",
+      "ingredients": [
+        "Romaine Lettuce",
+        "Croutons",
+        "Parmesan",
+        "Caesar Dressing"
+      ],
+      "weight": "300",
+      "price": 90,
+      "image": "../../src/assets/caesar-salad.jpeg",
+      "category": "starter",
+      "calories": 350,
+      "isVegan": false
+    },
+    {
+      "id": 8,
+      "name": "Margarita Pizza",
+      "ingredients": [
+        "Dough",
+        "Tomato Sauce",
+        "Mozzarella",
+        "Basil"
+      ],
+      "weight": "450",
+      "price": 200,
+      "image": "../../src/assets/margarita-pizza.jpeg",
+      "category": "food",
+      "calories": 700,
+      "isVegan": false
+    },
+    {
+      "id": 9,
+      "name": "Iced Tea",
+      "ingredients": [
+        "Black Tea",
+        "Lemon",
+        "Ice"
+      ],
+      "weight": "250",
+      "price": 40,
+      "image": "../../src/assets/iced-tea.jpeg",
+      "category": "drink",
+      "calories": 90,
+      "isVegan": true
+    },
+    {
+      "id": 10,
+      "name": "Minestrone Soup",
+      "ingredients": [
+        "Vegetables",
+        "Beans",
+        "Tomato Broth"
+      ],
+      "weight": "350",
+      "price": 80,
+      "image": "../../src/assets/minestrone-soup.jpeg",
+      "category": "starter",
+      "calories": 150,
+      "isVegan": true
+    },
+    {
+      "id": 11,
+      "name": "Veggie Burger",
+      "ingredients": [
+        "Black Beans",
+        "Quinoa",
+        "Lettuce",
+        "Tomato"
+      ],
+      "weight": "350",
+      "price": 170,
+      "image": "../../src/assets/veggie-burger.jpeg",
+      "category": "food",
+      "calories": 400,
+      "isVegan": true
+    },
+    {
+      "id": 12,
+      "name": "Garlic Bread",
+      "ingredients": [
+        "Bread",
+        "Garlic",
+        "Butter",
+        "Parsley"
+      ],
+      "weight": "150",
+      "price": 60,
+      "image": "../../src/assets/garlic-bread.jpeg",
+      "category": "starter",
+      "calories": 280,
+      "isVegan": false
+    },
+    {
+      "id": 13,
+      "name": "Lemonade",
+      "ingredients": [
+        "Lemon",
+        "Sugar",
+        "Water"
+      ],
+      "weight": "250",
+      "price": 50,
+      "image": "../../src/assets/lemonade.jpeg",
+      "category": "drink",
+      "calories": 120,
+      "isVegan": true
+    },
+    {
+      "id": 14,
+      "name": "Beef Steak",
+      "ingredients": [
+        "Beef",
+        "Salt",
+        "Pepper"
+      ],
+      "weight": "400",
+      "price": 350,
+      "image": "../../src/assets/beef-steak.jpeg",
+      "category": "food",
+      "calories": 600,
+      "isVegan": false
+    },
+    {
+      "id": 15,
+      "name": "Bruschetta",
+      "ingredients": [
+        "Bread",
+        "Tomato",
+        "Garlic",
+        "Basil"
+      ],
+      "weight": "200",
+      "price": 70,
+      "image": "../../src/assets/bruschetta.jpeg",
+      "category": "starter",
+      "calories": 150,
+      "isVegan": true
+    },
+    {
+      "id": 16,
+      "name": "Espresso",
+      "ingredients": [
+        "Coffee Beans",
+        "Water"
+      ],
+      "weight": "60",
+      "price": 40,
+      "image": "../../src/assets/espresso.jpeg",
+      "category": "drink",
+      "calories": 5,
+      "isVegan": true
+    },
+    {
+      "id": 17,
+      "name": "Pasta Carbonara",
+      "ingredients": [
+        "Pasta",
+        "Eggs",
+        "Bacon",
+        "Parmesan"
+      ],
+      "weight": "400",
+      "price": 180,
+      "image": "../../src/assets/pasta-carbonara.jpeg",
+      "category": "food",
+      "calories": 550,
+      "isVegan": false
+    },
+    {
+      "id": 18,
+      "name": "Greek Salad",
+      "ingredients": [
+        "Tomato",
+        "Cucumber",
+        "Feta Cheese",
+        "Olives"
+      ],
+      "weight": "300",
+      "price": 90,
+      "image": "../../src/assets/greek-salad.jpeg",
+      "category": "starter",
+      "calories": 200,
+      "isVegan": false
+    },
+    {
+      "id": 19,
+      "name": "Mojito",
+      "ingredients": [
+        "Mint",
+        "Lime",
+        "Sugar",
+        "Soda Water"
+      ],
+      "weight": "250",
+      "price": 120,
+      "image": "../../src/assets/mojito.jpeg",
+      "category": "drink",
+      "calories": 150,
+      "isVegan": true
+    },
+    {
+      "id": 20,
+      "name": "Chocolate Cake",
+      "ingredients": [
+        "Flour",
+        "Sugar",
+        "Cocoa",
+        "Eggs"
+      ],
+      "weight": "150",
+      "price": 100,
+      "image": "../../src/assets/chocolate-cake.jpeg",
+      "category": "other",
+      "calories": 450,
+      "isVegan": false
+    },
+    {
+      "id": "9116",
+      "name": "avin",
+      "weight": "11",
+      "price": 1,
+      "image": "/src/assets/food.webp",
+      "category": "food",
+      "calories": 1,
+      "isVegan": true,
+      "ingredients": []
+    }
+  ]
+}

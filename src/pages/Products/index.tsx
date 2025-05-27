@@ -1,45 +1,25 @@
 import { useEffect, useMemo, useState } from "react";
+import { useProductStore } from "../../store/productStore";
+import Wrapper from "../../components/Wrapper";
 import Card from "../../components/Card";
 import TabFilter from "../../components/TabFilter";
-import Wrapper from "../../components/Wrapper";
-import { foodItems } from "../../data/foodItems";
 import Addproduct from "../../components/AddProduct";
 import FormNewProduct from "../../components/FormNewProduct";
-import { useProductStore } from "../../store/productStore";
 import Search from "../../components/SearchBar";
-type foodItems = {
-  id: number;
-  name: string;
-  ingredients: string[];
-  weight: string;
-  price: number;
-  image: string;
-  category: string;
-  calories: number;
-  isVegan: boolean;
-};
+export type Category = "food" | "starter" | "drink" | "other";
 export default function Products() {
   const [show, setShow] = useState(false);
-  const [formMode, setFormMode] = useState<"add" | "edit" | "view">("view");
+  const [formMode, setFormMode] = useState<"add" | "edit" | "view">("add");
+  const [activeTab, setActiveTab] = useState<"food" | "starter" | "drink" | "other">("food");
 
-  const products = useProductStore((state) => state.products);
-  const setProducts = useProductStore((state) => state.setProducts);
-  const setProductData = useProductStore((state) => state.setProductData);
-  const activeTab = useProductStore((state) => state.activeTab);
-  const setActiveTab = useProductStore((state) => state.setActiveTab);
-  const searchName = useProductStore((state) => state.searchName);
+  const [searchName, setSearchName] = useState("");
+
+  const { products, fetchProducts } = useProductStore();
 
   useEffect(() => {
-    if (products.length === 0) {
-      setProducts(foodItems);
-    }
+    fetchProducts();
+    console.log("products: ", products);
   }, []);
-  useEffect(() => {
-    console.log("Updated products in Products component:", products);
-  }, [products]);
-  useEffect(() => {
-    console.log("Active tab updated:", activeTab);
-  }, [activeTab]);
 
   const filteredItems = useMemo(() => {
     return products.filter((item) => {
@@ -47,18 +27,13 @@ export default function Products() {
       const matchSearch = item.name
         .toLowerCase()
         .includes(searchName.toLowerCase());
-      
       return matchCategory && matchSearch;
     });
-  
   }, [products, activeTab, searchName]);
-
   console.log("filteredItems:", filteredItems);
-  console.log("Active tab:", activeTab);
 
   const handleFormToggle = () => setShow(!show);
-
-  const handleTabClick = (category: string) => setActiveTab(category);
+  const handleTabClick = (category: Category) => setActiveTab(category);
 
   return (
     <div
@@ -66,25 +41,34 @@ export default function Products() {
         show ? "bg-gray-300" : "bg-gray-100"
       }`}
     >
-      <Search />
-      <TabFilter className="" categoryMode={handleTabClick} />
+      <Search 
+       searchName={searchName}
+  setSearchName={setSearchName}
+      />
+      <TabFilter categoryMode={handleTabClick} />
+
       <Wrapper>
-        {filteredItems.map((item) => (
-          <Card
-            key={item.id}
-            {...item}
-            onView={() => {
-              setFormMode("view");
-              setProductData(item);
-              setShow(true);
-            }}
-            onEdit={() => {
-              setFormMode("edit");
-              setProductData(item);
-              setShow(true);
-            }}
-          />
-        ))}
+        {filteredItems.length > 0 ? (
+          filteredItems.map((item) => (
+            
+            <Card
+              key={item.id}
+              {...item}
+              onView={() => {
+                setFormMode("view");
+                setShow(true);
+                useProductStore.getState().loadProductToForm(item);
+              }}
+              onEdit={() => {
+                setFormMode("edit");
+                useProductStore.getState().loadProductToForm(item);
+                setShow(true);
+              }}
+            />
+          ))
+        ) : (
+          <p className="text-center text-gray-500">موردی پیدا نشد</p>
+        )}
         <Addproduct onClick={handleFormToggle} />
       </Wrapper>
 
@@ -92,12 +76,13 @@ export default function Products() {
         <div
           onClick={handleFormToggle}
           className="absolute bg-black opacity-50 z-10 transition-opacity duration-300 top-0 bottom-0 left-0 right-0"
-        ></div>
+        />
       )}
 
       <FormNewProduct
-        onClose={handleFormToggle}
         mode={formMode}
+        defaultCategory={activeTab}
+        onClose={handleFormToggle}
         className={`transition-all duration-300 ${
           show ? "transform translate-x-[0]" : "transform translate-x-full"
         } `}

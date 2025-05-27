@@ -1,5 +1,3 @@
-// import { IoMdClose } from "react-icons/io";
-import { useProductStore } from "../../store/productStore";
 import Button from "../Button";
 import { FaPlus } from "react-icons/fa";
 import { PiHamburgerFill } from "react-icons/pi";
@@ -8,52 +6,83 @@ import Ingredient from "../Ingredient";
 import { IoMdClose } from "react-icons/io";
 import vegan from "../../assets/vegan.png";
 import { MdFileUpload } from "react-icons/md";
-import { categoryImageMap } from "../../data/foodItems";
+import { useState, useEffect } from "react";
+import { useProductStore } from "../../store/productStore";
+import defaultImage from "../../assets/food.webp";
+
+export type Category = "food" | "starter" | "drink" | "other";
+
 type FormType = {
-  mode: any;
-  onClose: any;
+  mode: "add" | "edit" | "view";
+  onClose: () => void;
   className: string;
+  defaultCategory: Category;
 };
-export default function FormNewProduct({ mode, onClose, className }: FormType) {
-  const {
-    newProduct,
-    setName,
-    setPrice,
-    setWeight,
-    setCalories,
-    setIsVegan,
-    setActiveTab,
-    addProduct,
-    updateProduct,
-    resetForm,
 
-    activeTab,
-  } = useProductStore();
-
+export default function FormNewProduct({
+  mode,
+  onClose,
+  className,
+  defaultCategory,
+}: FormType) {
   const isEdit = mode === "edit";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { newProduct, addProduct, updateProduct } = useProductStore();
+
+  // وقتی newProduct تغییر کرد، state های فرم رو به‌روزرسانی کن
+  const [name, setName] = useState(newProduct.name);
+  const [weight, setWeight] = useState(newProduct.weight);
+  const [price, setPrice] = useState(newProduct.price);
+  const [category, setCategory] = useState<Category>(newProduct.category || defaultCategory);
+  const [calories, setCalories] = useState(newProduct.calories);
+  const [isVegan, setIsVegan] = useState(newProduct.isVegan);
+  const [ingredients, setIngredients] = useState<string[]>(newProduct.ingredients);
+  const [image, setImage] = useState(newProduct.image || defaultImage);
+
+  useEffect(() => {
+    setName(newProduct.name);
+    setWeight(newProduct.weight);
+    setPrice(newProduct.price);
+    setCategory(newProduct.category || defaultCategory);
+    setCalories(newProduct.calories);
+    setIsVegan(newProduct.isVegan);
+    setIngredients(newProduct.ingredients);
+    setImage(newProduct.image || defaultImage);
+  }, [newProduct, defaultCategory]);
+
+  const handelSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const image = categoryImageMap[activeTab] || "";
-
-    const newItem = {
-      ...newProduct,
-      id: Date.now(),
-      category: newProduct.category || activeTab,
-      image,
-    };
-    console.log("New product category:", newItem.category);
-    console.log("Active tab before add:", activeTab);
-
-    if (mode === "add") {
-      addProduct(newItem);
-      setActiveTab(newItem.category);
-      console.log("Added new product:", newItem);
+    if (!name || !price || !weight) {
+      alert("لطفا تمام فیلدهای ضروری را پر کنید");
+      return;
     }
 
-    resetForm();
-    onClose();
+    const productToSave = {
+      id: (newProduct as any).id, // اگر ادیت هست id رو بذار، برای اضافه کردن میتونی حذفش کنی
+      name,
+      weight,
+      price,
+      image,
+      category,
+      calories,
+      isVegan,
+      ingredients,
+    };
+
+    try {
+      if (mode === "add") {
+        await addProduct(productToSave);
+        alert("محصول با موفقیت اضافه شد");
+      } else if (mode === "edit") {
+        await updateProduct(productToSave);
+        alert("محصول با موفقیت ویرایش شد");
+      }
+      onClose();
+    } catch (err) {
+      alert("خطا در ذخیره محصول");
+      console.error(err);
+    }
   };
 
   return (
@@ -68,74 +97,83 @@ export default function FormNewProduct({ mode, onClose, className }: FormType) {
             ? "Edit"
             : "Product details"}
         </p>
-        <span onClick={onClose}>
+        <span onClick={onClose} className="cursor-pointer">
           <IoMdClose color="gray" size={25} />
         </span>
       </div>
 
-      <form onSubmit={handleSubmit} className=" flex flex-col gap-2">
+      <form onSubmit={handelSubmit} className="flex flex-col gap-2">
         <TextField
-          value={newProduct.name}
-          wrapperClassName="flex flex-col"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           label="Name of the product"
           type="text"
-          onChange={(e) => setName(e.target.value)}
           id="name"
-          key="name"
-          inputClassName="w-[80%] "
+          readOnly={mode === "view"}
         />
 
-        <Ingredient mode={mode} />
+        <Ingredient
+          mode={mode}
+          
+          
+        />
 
         <TextField
-          inputClassName=" w-8 h-8"
+          inputClassName="w-8 h-8"
           labelClassName=""
-          checked={newProduct.isVegan}
+          checked={isVegan}
           type="checkbox"
           label="Suitable for vegans"
-          wrapperClassName="flex flex-row-reverse items-center justify-end  "
+          wrapperClassName="flex flex-row-reverse items-center justify-end"
           onChange={(e) => setIsVegan(e.target.checked)}
+          readOnly={mode === "view"}
         >
           <img className="w-12 h-12" src={vegan} alt="" />
         </TextField>
-        <div className="flex">
+
+        <div className="flex gap-4">
           <TextField
-            value={newProduct.weight}
+            value={weight}
             type="text"
             label="Weight in grams"
             onChange={(e) => setWeight(e.target.value)}
+            readOnly={mode === "view"}
           />
 
           <TextField
             type="number"
             label="Calories"
-            value={newProduct.calories}
+            value={calories}
             onChange={(e) => setCalories(Number(e.target.value))}
+            readOnly={mode === "view"}
           />
         </div>
 
         <TextField
           type="number"
           label="Price of the product"
-          value={newProduct.price}
+          value={price}
           onChange={(e) => setPrice(Number(e.target.value))}
-          wrapperClassName="flex flex-col"
+          readOnly={mode === "view"}
         />
+
         <div className="flex justify-evenly my-2 h-20 items-center text-xl font-medium ">
           <p>Upload photo</p>
-          <Button className="flex items-center gap-3" label="Chose file">
+          <Button className="flex items-center gap-3" label="Choose file">
             <MdFileUpload size={23} />
           </Button>
         </div>
-        <Button
-          disabled={mode === "view"}
-          className="w-full bg-gray-800 text-white p-5 rounded-2xl flex items-center justify-center gap-2 text-xl"
-          label={isEdit ? "Update product" : "Add product to the menu"}
-          type="submit"
-        >
-          <FaPlus size={23} color="white" />
-          <PiHamburgerFill size={23} color="white" />
-        </Button>
+
+        {mode !== "view" && (
+          <Button
+            className="w-full bg-gray-800 text-white p-5 rounded-2xl flex items-center justify-center gap-2 text-xl"
+            label={isEdit ? "Update product" : "Add product to the menu"}
+            type="submit"
+          >
+            <FaPlus size={23} color="white" />
+            <PiHamburgerFill size={23} color="white" />
+          </Button>
+        )}
       </form>
     </div>
   );

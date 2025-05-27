@@ -10,6 +10,7 @@ type PropsType = {
   type: string;
   checked?: boolean;
   children?: React.ReactNode;
+  readOnly?: boolean
 };
 export default function TextField(props: PropsType) {
   const {
@@ -23,7 +24,8 @@ export default function TextField(props: PropsType) {
     checked,
     inputClassName,
     wrapperClassName,
-    children
+    children,
+    readOnly
   } = props;
   return (
     <div className={`${wrapperClassName} gap-3 p-2 `}>
@@ -42,6 +44,7 @@ export default function TextField(props: PropsType) {
         value={value}
         placeholder={plac}
         checked={checked}
+        readOnly={readOnly}
       ></input>
       
       
