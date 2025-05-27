@@ -1,4 +1,7 @@
+
+
 import { create } from "zustand";
+
 
 export type Product = {
   id: number;
@@ -31,6 +34,8 @@ type ProductState = {
   setActiveTab: (tab: string) => void;
   searchName: string;
 setSearchName: (text: string) => void;
+setCategory:(text:string) => void
+setImage:(text:string) => void
 };
 
 const initialProduct: Product = {
@@ -67,6 +72,10 @@ export const useProductStore = create<ProductState>((set) => ({
     set((state) => ({
       newProduct: { ...state.newProduct, weight },
     })),
+    setCategory: (category) =>
+      set((state) => ({
+        newProduct: {...state.newProduct , category}
+      })),
 
   setCalories: (calories) =>
     set((state) => ({
@@ -76,6 +85,10 @@ export const useProductStore = create<ProductState>((set) => ({
   setIsVegan: (isVegan) =>
     set((state) => ({
       newProduct: { ...state.newProduct, isVegan },
+    })),
+  setImage: (image) =>
+    set((state) => ({
+      newProduct: { ...state.newProduct, image },
     })),
 
   addIngredient: (ingredient) =>
@@ -94,10 +107,11 @@ export const useProductStore = create<ProductState>((set) => ({
       },
     })),
 
-  addProduct: (product) =>
-    set((state) => ({
-      products: [...state.products, product],
-    })),
+  addProduct: (newItem) => set((state) => {
+    const newProducts = [...state.products, newItem];
+    console.log("Updated products:", newProducts);
+    return { products: newProducts };
+  }),
 
   updateProduct: (updated) =>
     set((state) => ({
@@ -110,5 +124,10 @@ export const useProductStore = create<ProductState>((set) => ({
   searchName: "",
 setSearchName: (text) => set(() => ({ searchName: text })),
 
-  resetForm: () => set(() => ({ newProduct: { ...initialProduct } })),
+ resetForm: () =>
+  set((state) => ({
+    newProduct: { ...initialProduct, category: state.activeTab },
+  })),
+
+  
 }));
