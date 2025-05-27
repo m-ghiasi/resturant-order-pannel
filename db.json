@@ -116,7 +116,7 @@
       ],
       "weight": "450",
       "price": 200,
-     "image": "/src/assets/food.webp",
+      "image": "/src/assets/food.webp",
       "category": "food",
       "calories": 700,
       "isVegan": false
@@ -146,7 +146,7 @@
       ],
       "weight": "350",
       "price": 80,
-      "image":"/src/assets/starter.jpeg",
+      "image": "/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 150,
       "isVegan": true
@@ -209,7 +209,7 @@
       "weight": "400",
       "price": 350,
       "image": "/src/assets/food.webp",
-      "category":"food",
+      "category": "food",
       "calories": 600,
       "isVegan": false
     },
@@ -224,7 +224,7 @@
       ],
       "weight": "200",
       "price": 70,
-      "image":"/src/assets/starter.jpeg",
+      "image": "/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 150,
       "isVegan": true
@@ -270,7 +270,7 @@
       ],
       "weight": "300",
       "price": 90,
-      "image":"/src/assets/starter.jpeg",
+      "image": "/src/assets/starter.jpeg",
       "category": "starter",
       "calories": 200,
       "isVegan": false
@@ -317,6 +317,45 @@
       "calories": 1,
       "isVegan": true,
       "ingredients": []
+    },
+    {
+      "id": "57f5",
+      "name": "avin",
+      "weight": "1",
+      "price": 1,
+      "image": "/src/assets/food.webp",
+      "category": "food",
+      "calories": 1,
+      "isVegan": true,
+      "ingredients": [
+        "ss"
+      ]
+    },
+    {
+      "id": "7cea",
+      "name": "hossein",
+      "weight": "1",
+      "price": 1,
+      "image": "/src/assets/food.webp",
+      "category": "other",
+      "calories": 1,
+      "isVegan": true,
+      "ingredients": [
+        "س"
+      ]
+    },
+    {
+      "id": "f410",
+      "name": "ثثث",
+      "weight": "1",
+      "price": 1,
+      "image": "/src/assets/food.webp",
+      "category": "starter",
+      "calories": 1,
+      "isVegan": true,
+      "ingredients": [
+        "سس"
+      ]
     }
   ]
 }

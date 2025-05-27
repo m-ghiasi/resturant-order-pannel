@@ -43,12 +43,12 @@ export default function FormNewProduct({
     setName(newProduct.name);
     setWeight(newProduct.weight);
     setPrice(newProduct.price);
-    setCategory(newProduct.category || defaultCategory);
+    setCategory(mode === "edit" ? newProduct.category : defaultCategory); 
     setCalories(newProduct.calories);
     setIsVegan(newProduct.isVegan);
     setIngredients(newProduct.ingredients);
     setImage(newProduct.image || defaultImage);
-  }, [newProduct, defaultCategory]);
+  }, [newProduct, defaultCategory, mode]);
 
   const handelSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
