@@ -73,14 +73,14 @@ export default function FormNewProduct({
     try {
       if (mode === "add") {
         await addProduct(productToSave);
-        alert("محصول با موفقیت اضافه شد");
+        alert("Added new product successfully");
       } else if (mode === "edit") {
         await updateProduct(productToSave);
-        alert("محصول با موفقیت ویرایش شد");
+        alert("Edit successfully");
       }
       onClose();
     } catch (err) {
-      alert("خطا در ذخیره محصول");
+      alert("Something is wrong...");
       console.error(err);
     }
   };
