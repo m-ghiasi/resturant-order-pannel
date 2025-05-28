@@ -110,12 +110,12 @@ export default function FormNewProduct({
           type="text"
           id="name"
           readOnly={mode === "view"}
+          wrapperClassName="flex flex-col"
         />
 
         <Ingredient
           mode={mode}
-          
-          
+                   
         />
 
         <TextField
@@ -131,7 +131,7 @@ export default function FormNewProduct({
           <img className="w-12 h-12" src={vegan} alt="" />
         </TextField>
 
-        <div className="flex gap-4">
+        <div className="flex ">
           <TextField
             value={weight}
             type="text"
@@ -155,6 +155,7 @@ export default function FormNewProduct({
           value={price}
           onChange={(e) => setPrice(Number(e.target.value))}
           readOnly={mode === "view"}
+          wrapperClassName="flex flex-col"
         />
 
         <div className="flex justify-evenly my-2 h-20 items-center text-xl font-medium ">

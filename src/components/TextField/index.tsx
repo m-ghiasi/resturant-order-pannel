@@ -35,7 +35,7 @@ export default function TextField(props: PropsType) {
       {children}
 
       <input
-        required
+        
         className={`bg-gray-100 rounded-xl"  p-2  focus:outline-none ${inputClassName} border border-gray-300 `}
         type={type}
         name={id}

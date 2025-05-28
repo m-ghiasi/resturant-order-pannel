@@ -6,7 +6,7 @@ import { IoMdMore } from "react-icons/io";
 import { useState } from "react";
 import Button from "../Button";
 
-// تعریف نوع Category که در چند جا استفاده می‌شه
+
 export type Category = "food" | "starter" | "drink" | "other";
 
 type FilterType = {
@@ -17,7 +17,7 @@ type FilterType = {
 
 type TabFilterProps = {
   categoryMode: (category: Category) => void;
-  className?: string; // اگر خواستی کلاس دلخواه بدی
+  className?: string; 
 };
 
 const filterItem: FilterType[] = [
